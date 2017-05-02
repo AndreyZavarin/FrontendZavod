@@ -4,10 +4,10 @@ import {
     AUTHORIZATION_ADMIN
 } from '../constants/App'
 
-function authorization(state = {authorization: false, data: null}, action) {
+function authorization(state = {authorization: false, token: null}, action) {
     switch (action.type){
         case AUTHORIZATION_ADMIN:
-            return {...state, data: action.data}
+            return {...state, token: action.data.token, authorization: true}
         default:
             return state
     }

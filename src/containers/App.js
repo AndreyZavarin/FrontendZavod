@@ -1,9 +1,10 @@
 import React ,{Component, PropTypes} from 'react'
-import AuthorizationAdmin from '../components/AuthorizationAdmin'
-import {authorizationAdmin} from '../actions/index'
-
-
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import AuthorizationAdmin from '../components/AuthorizationAdmin'
+import ClientsList from '../components/ClientsList'
+import {authorizationAdmin} from '../actions/index'
+import * as pageActions from '../actions/index'
 
 import '../css/appStyle.css'
 
@@ -12,10 +13,6 @@ class App extends Component  {
         super(props)
         this.onHandleSubmit = this.onHandleSubmit.bind(this)
         this.onFieldChange = this.onFieldChange.bind(this)
-        this.state = {
-            login: null,
-            password: null
-        }
     }
 
     onFieldChange(fieldName, e){
@@ -27,32 +24,44 @@ class App extends Component  {
         event.preventDefault()
         console.log(">>>>>>>>>>>>>>>>>>>>..")
         //if(this.state.login && this.state.password){
-        this.props.dispatch(authorizationAdmin(this.state.login, this.state.password))
+        this.props.pageActions.authorizationAdmin('admin','password')
+        // this.props.dispatch(authorizationAdmin('admin','password'))
 
         //}
     }
 
     render(){
-        return <div>
-            <AuthorizationAdmin
-                onFieldChange = {this.onFieldChange}
-                onHandleSubmit = {this.onHandleSubmit}
-            />
-        </div>
+        if(this.props.authorization.authorization){
+            return <div>
+                <ClientsList
+                    getAllClientsList = {this.props.pageActions.getAllClientsList}
+                    addClient = {this.props.pageActions.addClient}
+                    getSingleClient = {this.props.pageActions.getSingleClient}
+                    token = {this.props.authorization.token}/>
+            </div>
+        }
+        else {
+            return <div>
+                <AuthorizationAdmin
+                    onFieldChange = {this.onFieldChange}
+                    onHandleSubmit = {this.onHandleSubmit}
+                />
+            </div>
+        }
     }
-}
-App.propTypes = {
-    dispatch: PropTypes.func,
-    children: PropTypes.any,
 }
 
 const mapStateToProps = (state) => {
     return {
         authorization: state.authorization
-        //dataLoanUsers: state.dataLoanUsers,
     }
 }
 
-export default connect(
-    mapStateToProps
-)(App)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        pageActions: bindActionCreators(pageActions, dispatch)
+    }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
