@@ -2,7 +2,7 @@ import React ,{Component, PropTypes} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import AuthorizationAdmin from '../components/AuthorizationAdmin'
-import ClientsList from '../components/ClientsList'
+import MainComponent from '../components/MainComponent'
 import {authorizationAdmin} from '../actions/index'
 import * as pageActions from '../actions/index'
 
@@ -33,7 +33,7 @@ class App extends Component  {
     render(){
         if(this.props.authorization.authorization){
             return <div>
-                <ClientsList
+                <MainComponent
                     getAllClientsList = {this.props.pageActions.getAllClientsList}
                     addClient = {this.props.pageActions.addClient}
                     getSingleClient = {this.props.pageActions.getSingleClient}
