@@ -1,8 +1,8 @@
 import React, {PropTypes, Component } from 'react'
 //import ReactDOM from 'react-dom';
-import LeftNavBarMini from './navbar/LeftNavBarMini'
-import TopNabBar from '../components/navbar/TopNabBar'
-import LeftNavBar from "./navbar/LeftNavBar";
+import LeftNavBarMini from './NavBar/LeftNavBarMini'
+import TopNabBar from './NavBar/TopNabBar'
+import LeftNavBar from "./NavBar/LeftNavBar";
 
 export default class MainComponent extends Component {
 

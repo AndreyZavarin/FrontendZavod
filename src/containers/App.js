@@ -6,7 +6,7 @@ import MainComponent from '../components/MainComponent'
 import {authorizationAdmin} from '../actions/index'
 import * as pageActions from '../actions/index'
 
-import '../css/appStyle.css'
+import '../style/appStyle.css'
 
 class App extends Component  {
     constructor(props){

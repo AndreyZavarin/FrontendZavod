@@ -1,6 +1,8 @@
-import { get,  post} from '../api'
 
-import {AUTHORIZATION_ADMIN} from '../constants/App'
+import {
+    AUTHORIZATION_ADMIN,
+    UPDATE_CLIENT_LIST
+} from '../constants/App'
 import fetch from 'isomorphic-fetch'
 
 
@@ -10,6 +12,23 @@ export function updateToken(data) {
         data: data
     }
 }
+
+export function updateClientList(data) {
+
+    console.log(data.content)
+    return{
+        type: UPDATE_CLIENT_LIST,
+        data: data
+    }
+}
+
+// export function parseClientList(data) {
+//     return{
+//         type: UPDATE_CLIENT_LIST,
+//         data: data
+//     }
+// }
+
 /**
  * Авторизация админимтратора
  * @param number
@@ -50,9 +69,15 @@ export function getAllClientsList (token) {
             headers: {
                 'X-Auth-Token': token,
             },
-        }).then(response => {
-            console.log(response.json())
-        })
+
+        }).then(response => response.json())
+            .then(json => {
+                    console.log(json)
+                    dispatch(updateClientList(json))
+                }
+            ).catch(response => {
+
+            })
     }
 }
 
