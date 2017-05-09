@@ -11,7 +11,7 @@ export default class TopNabBar extends Component {
     }
 
     render() {
-        return <div className="col-sm-9" style={{background: "#22d686"}}>
+        return <div className="clearfix col-sm-10" style={{background: "#3399cc"}}>
             <div className="col-sm-6">
                 <h4>ZAVOD</h4>
             </div>

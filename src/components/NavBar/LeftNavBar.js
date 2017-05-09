@@ -2,8 +2,6 @@
  * Created by zawar on 03.05.2017.
  */
 import React, {PropTypes, Component } from 'react'
-//import ReactDOM from 'react-dom';
-
 
 export default class LeftNavBar extends Component {
 
@@ -11,15 +9,16 @@ export default class LeftNavBar extends Component {
     }
 
     render() {
-        return <div className="col-sm-3 sidenav hidden-xs">
+        return <div className="col-sm-2 sidenav hidden-xs" style={{background: "#333366"}}>
+            <div className="img-responsive phone-disc"
+                 style={{width: "200px",height: "48px", background: "url(/src/img/logo_zavod_mini.png) 100% 100% no-repeat"}}>
+            </div>
 
-
-            <h2>ZAVOD</h2>
             <ul className="nav nav-pills nav-stacked">
-                <li className="active"><a href="#section1">Клиенты</a></li>
-                <li><a href="#section2">Сотрудники</a></li>
-                <li><a href="#section3">Товары</a></li>
-                <li><a href="#section4">Абоенементы</a></li>
+                <li className="active"><a href="#section1"><span className="glyphicon glyphicon-user"></span> Клиенты</a></li>
+                <li><a href="#section2"><span className="glyphicon glyphicon-user "></span> Сотрудники</a></li>
+                <li><a href="#section3"><span className="glyphicon glyphicon-tasks"></span> Товары</a></li>
+                <li><a href="#section4"><span className="glyphicon glyphicon-list-alt"></span> Абонементы</a></li>
             </ul>
                 <br/>
         </div>

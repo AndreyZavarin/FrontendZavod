@@ -4,7 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    'bootstrap-loader',
     'webpack-hot-middleware/client',
     './src/index',
   ],
@@ -13,10 +12,7 @@ module.exports = {
   },
 
   module: {
-    // loaders: [{middlewares
-    //   test: /\.scss$/,
-    //   loader: 'style!style?localIdentName=[path][name]--[local]!postcss-loader!sass',
-    // }],
+
   },
 
   plugins: [

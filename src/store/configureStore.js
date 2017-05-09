@@ -2,14 +2,15 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { rootReducer } from '../reducers'
-import { redirect } from '../middlewares/redirect'
 
 export default function configureStore() {
-  const store = compose(
+
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const store = composeEnhancers(
     applyMiddleware(thunkMiddleware),
     applyMiddleware(createLogger()),
-    applyMiddleware(redirect)
   )(createStore)(rootReducer)
+
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

@@ -18,7 +18,7 @@ export function updateClientList(data) {
     console.log(data.content)
     return{
         type: UPDATE_CLIENT_LIST,
-        data: data
+        data: data.content
     }
 }
 

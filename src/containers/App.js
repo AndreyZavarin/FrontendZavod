@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import AuthorizationAdmin from '../components/AuthorizationAdmin'
 import MainComponent from '../components/MainComponent'
-import {authorizationAdmin} from '../actions/index'
 import * as pageActions from '../actions/index'
 
 import '../style/appStyle.css'
@@ -25,9 +24,6 @@ class App extends Component  {
         console.log(">>>>>>>>>>>>>>>>>>>>..")
         //if(this.state.login && this.state.password){
         this.props.pageActions.authorizationAdmin('admin','password')
-        // this.props.dispatch(authorizationAdmin('admin','password'))
-
-        //}
     }
 
     render(){
@@ -37,7 +33,9 @@ class App extends Component  {
                     getAllClientsList = {this.props.pageActions.getAllClientsList}
                     addClient = {this.props.pageActions.addClient}
                     getSingleClient = {this.props.pageActions.getSingleClient}
-                    token = {this.props.authorization.token}/>
+                    token = {this.props.authorization.token}
+                    clients = {this.props.clients}
+                />
             </div>
         }
         else {
@@ -53,7 +51,8 @@ class App extends Component  {
 
 const mapStateToProps = (state) => {
     return {
-        authorization: state.authorization
+        authorization: state.authorization,
+        clients: state.clients
     }
 }
 
