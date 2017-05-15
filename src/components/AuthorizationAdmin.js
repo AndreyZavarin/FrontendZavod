@@ -12,13 +12,13 @@ return <div className="container">
                                     <form onSubmit={onHandleSubmit} id="login-form" action="#" method="post" role="form"  style={{display: "block"}}>
                                         <h2>Авторизация</h2>
                                         <div className="form-group">
-                                            <input onChange={onFieldChange.bind(this, 'login')} type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Логин" value="" />
+                                            <input onChange={onFieldChange.bind(this, 'login')} type="text" name="username" id="username" tabIndex="1" className="form-control" placeholder="Логин" />
                                         </div>
                                         <div className="form-group">
                                             <input type="password" name="password" id="password" tabIndex="2" className="form-control" placeholder="Пароль" />
                                         </div>
                                         <div className="col-xs-12 form-group pull-right">
-                                            <input onChange={onFieldChange.bind(this, 'password')} type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login" value="Войти" />
+                                            <input onChange={onFieldChange.bind(this, 'password')} type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login" style={{color: '#ffffff'}} value="Войти" />
                                         </div>
                                     </form>
                                 </div>
