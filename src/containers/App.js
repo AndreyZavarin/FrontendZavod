@@ -10,6 +10,8 @@ import SingleClient from '../components/Clients/SingleClient'
 import AddQuestionnaire from '../components/Clients/AddQuestionnaire '
 import VisitWithoutRegistration from '../components/Clients/VisitWithoutRegistration'
 import AddSubscriptions from '../components/Subscriptions/AddSubscriptions'
+import Products from '../components/Products/Products'
+
 import * as pageActions from '../actions/index'
 
 import '../style/appStyle.css'
@@ -110,12 +112,17 @@ class App extends Component  {
                             clientData = {clientData}
                         />
                     }
-
-
                     {activePage === 'editingClient' && <EditingClient
                         updateActivePage = {this.updateActivePage}
                     />}
                     {activePage === 'visitWithoutRegistration'&&<VisitWithoutRegistration
+                        updateActivePage = {this.updateActivePage}
+                    />}
+
+
+                    {/*FROM PRODUCTS*/}
+                    {activePage === 'products' && <Products
+                        products = {this.props.products}
                         updateActivePage = {this.updateActivePage}
                     />}
                 </MainComponent>
@@ -136,7 +143,8 @@ const mapStateToProps = (state) => {
     return {
         authorization: state.authorization,
         clients: state.clients,
-        router: state.router
+        router: state.router,
+        products: state.products
     }
 }
 

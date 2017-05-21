@@ -18,7 +18,7 @@ export default class LeftNavBar extends Component {
 
             <ul className="nav nav-pills nav-stacked left-nav-bar" style={{marginTop:'20px'}}>
                 <li className="active"><a onClick={this.props.updateActivePage.bind(this, 'clients')} href="#clients"><span className="glyphicon glyphicon-user"></span> Клиенты</a></li>
-                <li><a href="#section3"><span className="glyphicon glyphicon-tasks"></span> Товары</a></li>
+                <li><a onClick={this.props.updateActivePage.bind(this, 'products')} href="#products"><span className="glyphicon glyphicon-tasks"></span> Товары</a></li>
                 <li><a href="#section4"><span className="glyphicon glyphicon-list-alt"></span> Абонементы</a></li>
             </ul>
                 <br/>

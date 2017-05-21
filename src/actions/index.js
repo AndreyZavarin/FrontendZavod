@@ -4,7 +4,11 @@ import {
     UPDATE_CLIENT_LIST,
     UPDATE_ACTIVE_PAGE,
     EDITING_CLIENT,
-    GET_SINGLE_CLIENT
+    GET_SINGLE_CLIENT,
+
+    UPDATE_PRODUCT_LIST,
+    GET_SINGLE_PRODUCT,
+    EDITING_PRODUCT
 } from '../constants/App'
 import fetch from 'isomorphic-fetch'
 
@@ -198,6 +202,90 @@ export function updateClient(id, token) {
                 }
             ).catch(response => {
 
+            })
+    }
+}
+
+
+// FROM PRODUCTS
+export function updateProductList(data) {
+    console.log(data.content)
+    return{
+        type: UPDATE_PRODUCT_LIST,
+        data: data.content
+    }
+}
+
+/**
+ * Получение списка продуктов
+ * @param token
+ * @returns {Function}
+ */
+export function getAllProductsList (token) {
+    return function (dispatch) {
+        return fetch('https://leha-plant-demo.herokuapp.com/products/all', {
+            method: 'GET',
+            headers: {
+                'X-Auth-Token': token,
+            },
+
+        }).then(response => response.json())
+            .then(json => {
+                    console.log(json)
+                    dispatch(updateProductList(json))
+                }
+            ).catch(response => {
+
+            })
+    }
+}
+
+/**
+ * Получение продуrта по id
+ * @param token
+ * @returns {Function}
+ */
+export function getSingleProduct (id) {
+    return function (dispatch, getState) {
+        const state = getState();
+        return fetch('https://leha-plant-demo.herokuapp.com/product/'+ id, {
+            method: 'GET',
+            headers: {
+                'X-Auth-Token': state.authorization.token,
+            },
+
+        }).then(response => response.json())
+            .then(json => {
+                    console.log(json)
+                    dispatch(updateActivePage('singleProduct'))
+                    dispatch({type: GET_SINGLE_PRODUCT, data: json})
+                }
+            ).catch(response => {
+            })
+    }
+}
+
+/**
+ * Обновление данных продукта
+ * @param id
+ * @param token
+ * @returns {Function}
+ */
+export function updateProduct(id, token, body) {
+    return function (dispatch) {
+        return fetch('http://localhost:8080/product/' + id, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                'X-Auth-Token': token
+            },
+            body: JSON.stringify(body)
+        }).then(response => response.json())
+            .then(json => {
+                    console.log(json)
+                    dispatch(updateProductList(json))
+                }
+            ).catch(response => {
             })
     }
 }
