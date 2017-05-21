@@ -119,27 +119,16 @@ export function getSingleClient (id) {
     }
 }
 
-
-
 /**
  * Создание клиента
  * @returns {Function}
  */
-export function addClient(data) {
-    console.log(data)
+export function addClient(body) {
+    console.log(body)
+    console.log('----addClient')
     return function (dispatch, getState) {
         const state = getState()
         console.log(state.authorization.token)
-
-        let body = {
-            "id":-1,
-            "firstName":data.firstName,
-            "lastName":data.lastName,
-            "middleName":data.middleName,
-            "gender":data.gender,
-            "birthDate":[2002,6,23],
-            "subscriptions":[]
-        }
 
         return fetch('https://leha-plant-demo.herokuapp.com/client/', {
             method: 'POST',
@@ -148,24 +137,13 @@ export function addClient(data) {
                 'X-Auth-Token': state.authorization.token
             },
             body: JSON.stringify(body)
-
-            // {
-            //    // body
-            //     "id":-1,
-            //     "firstName":"NIKITA3",
-            //     "lastName":"BOZHEV",
-            //     "middleName":"IGOREVICH",
-            //     "gender":"MALE",
-            //     "birthDate":[2002,6,23],
-            //     "subscriptions":[]
-            // })
         }).then(response => response.json())
             .then(json => {
                     console.log(json)
                     dispatch(updateClientList(json))
                 }
             ).catch(response => {
-
+                //TODO если отвалился сервер
             })
     }
 }

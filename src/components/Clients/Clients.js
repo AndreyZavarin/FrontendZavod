@@ -23,7 +23,7 @@ const ActionAboveClient = ({updateActivePage}) => {
 const StatusAbonements = ({status}) => {
     const statusText = ['Действующий', 'Просрочен', 'Заморожен', 'Ожидающий', 'Истекающий', 'Внимание']
     const statusButton = ['label label-success', 'label label-danger', 'label label-info', 'label label-primary', 'label label-warning', 'label label-important']
-    return <h4><span className={statusButton[status]}>{statusText[status]}</span></h4>
+    return <h4><span style={{width: '110px', display: 'block'}} className={statusButton[status]}>{statusText[status]}</span></h4>
 }
 
 export default class Clients extends Component {
@@ -36,6 +36,33 @@ export default class Clients extends Component {
         const {allClientsList} = this.props.clients
         let clients = [];
         if(allClientsList) {
+            const testMas = [
+                ['8-937-212-33-44', 'avan@mail.ru', 'В зале', '01', '0'],
+                ['8-937-666-37-14', 'avan@mail.ru', 'Отсутствует', '02', '1'],
+                ['8-937-254-66-64', 'avan@mail.ru', 'В зале', '03', '0'],
+                ['8-937-223-22-84', 'avan@mail.ru', 'Отсутствует', '04', '3'],
+                ['8-937-265-11-99', 'avan@mail.ru', 'В зале', '05', '0'],
+                ['8-937-217-12-40', 'avan@mail.ru', 'В зале', '06', '0'],
+                ['8-937-215-33-15', 'avan@mail.ru', 'Отсутствует', '07', '4'],
+                ['8-937-243-45-56', 'avan@mail.ru', 'Отсутствует', '08', '0'],
+                ['8-937-267-12-78', 'avan@mail.ru', 'Отсутствует', '09', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+                ['8-937-207-33-01', 'avan@mail.ru', 'Отсутствует', '10', '0'],
+            ]
 
             for (let i = 0; i < allClientsList.length; i++) {
                 const clientRow = <tr key={allClientsList[i].id}>
@@ -46,11 +73,11 @@ export default class Clients extends Component {
                     </td>
                     <td><input type="checkbox"/></td>
                     <td><a href="#" onClick={this.props.getSingleClient.bind(this, allClientsList[i].id)}>{allClientsList[i].lastName} {allClientsList[i].firstName} {allClientsList[i].middleName}</a></td>
-                    <td>8-999-999-99-99</td>
-                    <td>user@mail.ru</td>
-                    <td>В зале</td>
-                    <td>111</td>
-                    <td><StatusAbonements status={0}/></td>
+                    <td>{testMas[i][0]}</td>
+                    <td>{testMas[i][1]}</td>
+                    <td>{testMas[i][2]}</td>
+                    <td>{testMas[i][3]}</td>
+                    <td><StatusAbonements status={testMas[i][4]}/></td>
                 </tr>
                 clients.push(clientRow);
             }

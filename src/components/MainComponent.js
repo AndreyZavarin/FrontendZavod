@@ -1,8 +1,8 @@
 import React, {PropTypes, Component } from 'react'
 //import ReactDOM from 'react-dom';
-import LeftNavBarMini from './NavBar/LeftNavBarMini'
-import TopNabBar from './NavBar/TopNabBar'
-import LeftNavBar from "./NavBar/LeftNavBar";
+import LeftNavBarMini from './Navigation/NavBar/LeftNavBarMini'
+import TopNabBar from './Navigation/NavBar/TopNabBar'
+import LeftNavBar from "./Navigation/NavBar/LeftNavBar";
 import Clients from "./Clients/Clients";
 import AddClient from "./Clients/AddClient";
 
@@ -19,7 +19,7 @@ export default class MainComponent extends Component {
                 <div className="container-fluid"  style={{ height: "100vh"}}>
                     <div className="row content">
                         <LeftNavBar
-                            updateActivePage = {this.props.updateActivePage}/>
+                            updateActivePage = {this.props.updateActivePage} />
                             <TopNabBar
                                 updateActivePage = {this.props.updateActivePage}
                             />
