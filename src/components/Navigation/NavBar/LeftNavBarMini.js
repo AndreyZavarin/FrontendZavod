@@ -25,7 +25,6 @@ export default class LeftNavBarMini extends Component {
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav">
                         <li className="active"><a href="#">Клиенты</a></li>
-                        <li><a href="#">Сотрудники</a></li>
                         <li><a href="#">Товары</a></li>
                         <li><a href="#">Абонементы</a></li>
                     </ul>

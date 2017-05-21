@@ -27,10 +27,18 @@ export default class TopNabBar extends Component {
                     <button type="button" className="btn btn-success dropdown-toggle" data-toggle="dropdown">Быстро добавить ... <span className="caret"></span></button>
                     <ul className="dropdown-menu" role="menu">
                         <li><a onClick={this.props.updateActivePage.bind(this, 'addClient')} href="#">Клиента</a></li>
-                        <li><a onClick={this.props.updateActivePage.bind(this, 'addCoWorker')}  href="#">Сотрудника</a></li>
                         <li><a onClick={this.props.updateActivePage.bind(this, 'addSubscription')} href="#">Абонемент</a></li>
                     </ul>
                 </div>
+
+                <div className="btn-group pull-right" style={{marginRight: "20px", padding: "10px"}}>
+                    <button type="button" className="btn btn-success dropdown-toggle" data-toggle="dropdown">Без регистрации ... <span className="caret"></span></button>
+                    <ul className="dropdown-menu" role="menu">
+                        <li><a onClick={this.props.updateActivePage.bind(this, 'addClient')} href="#">Покупка товара</a></li>
+                        <li><a onClick={this.props.updateActivePage.bind(this, 'visitWithoutRegistration')}  href="#">Посещение</a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     }

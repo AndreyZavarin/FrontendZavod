@@ -1,5 +1,5 @@
 import React from 'react'
-import '../style/auth.css'
+import '../../style/auth.css'
 
 const AuthorizationAdmin = ({onFieldChange, onHandleSubmit}) =>{
 return <div className="container">
